@@ -1,13 +1,13 @@
 from io import BytesIO
-
-from fastapi import FastAPI, File, HTTPException, UploadFile
+from fastapi.responses import Response
+from fastapi import FastAPI, File, HTTPException, UploadFile, Query
 from PIL import Image, UnidentifiedImageError
 from pydantic import BaseModel, Field
 
 from app.bigram_model import BigramModel
 from app.cnn_service import predict_image
 from app.embedding_model import calculate_embedding
-
+from app.gan_service import generate_digits
 
 app = FastAPI(
     title="Applied Generative AI API",
@@ -113,3 +113,14 @@ async def classify_image(
         "filename": file.filename,
         **prediction,
     }
+
+@app.get("/generate-digits")
+def generate_digit_images(
+    num_samples: int = Query(default=16, ge=1, le=64),
+):
+    image_bytes = generate_digits(num_samples)
+
+    return Response(
+        content=image_bytes,
+        media_type="image/png",
+    )

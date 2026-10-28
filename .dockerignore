@@ -13,3 +13,9 @@ data/
 # Local test files and assignment documents
 test_cifar10.png
 Assignment*.pdf
+
+# Training artifacts are not required for API inference
+outputs/
+*.ipynb
+organize_gan_notebook.py
+finalize_gan_notebook.py

@@ -15,3 +15,21 @@ test_cifar10.png
 
 # Assignment documents are submitted separately
 Assignment*.pdf
+
+# Local notebook drafts and maintenance scripts
+.ipynb_checkpoints/
+Assignment3_GAN.ipynb
+Assignment3_GAN_before_cleanup_*.ipynb
+organize_gan_notebook.py
+finalize_gan_notebook.py
+
+# Retain only the final resumable experiment and its epoch images
+outputs/*
+!outputs/gan_20261027_224535/
+outputs/gan_20261027_224535/*
+!outputs/gan_20261027_224535/samples/
+!outputs/gan_20261027_224535/checkpoints/
+outputs/gan_20261027_224535/samples/*
+!outputs/gan_20261027_224535/samples/epoch_*.png
+outputs/gan_20261027_224535/checkpoints/*
+!outputs/gan_20261027_224535/checkpoints/gan_epoch_010.pth
